@@ -62,6 +62,19 @@ Then open **http://127.0.0.1:8000** in your browser. Alternatively:
 
 Interactive API docs are available locally at `/api/docs`.
 
+## Deploying to Vercel (optional)
+
+The repo ships with `vercel.json` and an `api/index.py` ASGI entrypoint, so it can also run as a serverless app:
+
+1. Push the repo to GitHub.
+2. Go to [vercel.com/new](https://vercel.com/new) and import the repository.
+3. Leave **Framework Preset** as "Other" and the root directory as-is; no environment variables are needed.
+4. Click **Deploy**.
+
+Vercel serves `/api/*` from the Python function and the frontend files from its CDN.
+Note: this makes the app publicly reachable over HTTPS — analysis remains stateless
+and nothing is persisted, but the "loopback-only" local guarantee no longer applies.
+
 ## API endpoints
 
 | Method | Path | Purpose |

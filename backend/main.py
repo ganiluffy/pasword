@@ -101,7 +101,8 @@ def generate(payload: GenerateRequest) -> GeneratedPasswordResponse:
 
 
 _FRONTEND_DIR = Path(__file__).resolve().parents[1] / "frontend"
-app.mount("/", StaticFiles(directory=str(_FRONTEND_DIR), html=True), name="frontend")
+if _FRONTEND_DIR.exists():
+    app.mount("/", StaticFiles(directory=str(_FRONTEND_DIR), html=True), name="frontend")
 
 
 if __name__ == "__main__":
